@@ -9,6 +9,8 @@ script — 100% in your browser, nothing uploaded.
 
 </div>
 
+![ScamLens demo](docs/demo.gif)
+
 ![ScamLens verdict](docs/verdict-dark.png)
 
 ## The problem nobody notices
