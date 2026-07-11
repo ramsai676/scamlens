@@ -4,6 +4,7 @@ import { useCallback, useRef, useState } from 'react';
 import { analyze, BAND_META, SAMPLES } from '@/lib/engine';
 import type { Verdict } from '@/lib/types';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { AnimatedNumber } from '@/components/motion-bits';
 import {
   AlertIcon,
   CheckIcon,
@@ -49,7 +50,7 @@ export default function Home() {
           <span className="text-[17px] font-semibold tracking-[-0.01em]">ScamLens</span>
         </div>
         <div className="flex items-center gap-3">
-          <a href="https://github.com/anirudhr/scamlens" className="text-sm text-[var(--ink-2)] transition-colors hover:text-[var(--ink)]">
+          <a href="https://github.com/ramsai/scamlens" className="text-sm text-[var(--ink-2)] transition-colors hover:text-[var(--ink)]">
             GitHub
           </a>
           <ThemeToggle />
@@ -58,9 +59,9 @@ export default function Home() {
 
       <main className="mx-auto max-w-3xl px-6 pb-24">
         {/* hero */}
-        <section className="mx-auto max-w-2xl pt-10 text-center sm:pt-14">
+        <section className="hero-glow mx-auto max-w-2xl pt-10 text-center sm:pt-14">
           <h1 className="rise rise-1 text-balance text-4xl font-semibold leading-[1.08] tracking-[-0.02em] sm:text-[50px]">
-            Your fraud instincts are out of date.
+            Your fraud instincts are <span className="grad-text">out of date</span>.
           </h1>
           <p className="rise rise-2 mx-auto mt-5 max-w-xl text-pretty text-[16px] leading-relaxed text-[var(--ink-2)]">
             Scammers use scripts — digital arrest, KYC expiry, task jobs, UPI collect tricks.
@@ -127,7 +128,7 @@ export default function Home() {
                       {bandMeta.title}
                     </h2>
                     <span className="text-[14px] font-semibold" style={{ fontVariantNumeric: 'tabular-nums', color: bandStyle.color }}>
-                      risk {verdict.risk}/100
+                      risk <AnimatedNumber value={verdict.risk} />/100
                     </span>
                   </div>
                   <div className="mt-3 h-2 overflow-hidden rounded-full" style={{ background: 'var(--grid)' }}>
@@ -144,7 +145,7 @@ export default function Home() {
                 {verdict.matches.map((m) => (
                   <div
                     key={m.pattern.id}
-                    className="rounded-2xl border p-5"
+                    className="card-lift rounded-2xl border p-5"
                     style={{ borderColor: 'var(--hairline)', background: 'var(--surface)', boxShadow: 'var(--shadow-card)' }}
                   >
                     <h3 className="flex items-center gap-2 text-[15px] font-semibold">
