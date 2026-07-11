@@ -50,7 +50,7 @@ embarrassing or scary.
 ## Run it
 
 ```bash
-git clone https://github.com/<you>/scamlens
+git clone https://github.com/ramsai676/scamlens
 cd scamlens
 npm install
 npm run dev      # http://localhost:3000

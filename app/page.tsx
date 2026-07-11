@@ -50,7 +50,7 @@ export default function Home() {
           <span className="text-[17px] font-semibold tracking-[-0.01em]">ScamLens</span>
         </div>
         <div className="flex items-center gap-3">
-          <a href="https://github.com/ramsai/scamlens" className="text-sm text-[var(--ink-2)] transition-colors hover:text-[var(--ink)]">
+          <a href="https://github.com/ramsai676/scamlens" className="text-sm text-[var(--ink-2)] transition-colors hover:text-[var(--ink)]">
             GitHub
           </a>
           <ThemeToggle />
