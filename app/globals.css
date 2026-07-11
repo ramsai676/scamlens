@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --ink-3: #898781;
+  --grid: #e1e0d9;
+  --baseline: #c3c2b7;
+  --hairline: rgba(11, 11, 11, 0.1);
+  --hairline-strong: rgba(11, 11, 11, 0.16);
+  --brand: #2a78d6;
+  --brand-strong: #1c5cab;
+  --brand-soft: rgba(42, 120, 214, 0.08);
+  --good: #0ca30c;
+  --good-text: #006300;
+  --warn: #c98500;
+  --serious: #ec835a;
+  --serious-text: #b4502d;
+  --critical: #d03b3b;
+  --shadow-card: 0 1px 2px rgba(11, 11, 11, 0.04), 0 4px 16px rgba(11, 11, 11, 0.04);
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.dark {
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --ink-3: #898781;
+  --grid: #2c2c2a;
+  --baseline: #383835;
+  --hairline: rgba(255, 255, 255, 0.1);
+  --hairline-strong: rgba(255, 255, 255, 0.18);
+  --brand: #3987e5;
+  --brand-strong: #6da7ec;
+  --brand-soft: rgba(57, 135, 229, 0.12);
+  --good: #0ca30c;
+  --good-text: #0ca30c;
+  --warn: #eda100;
+  --serious: #ec835a;
+  --serious-text: #ec835a;
+  --critical: #d03b3b;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+html {
+  background: var(--page);
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--brand);
+  color: #fff;
+}
+
+.pressable {
+  transition: transform 160ms var(--ease-out-strong);
+}
+.pressable:active {
+  transform: scale(0.97);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  opacity: 0;
+  animation: rise-in 400ms var(--ease-out-strong) forwards;
+}
+.rise-1 { animation-delay: 0ms; }
+.rise-2 { animation-delay: 40ms; }
+.rise-3 { animation-delay: 80ms; }
+.rise-4 { animation-delay: 120ms; }
+.rise-5 { animation-delay: 160ms; }
+
+/* task bars animate their width once on mount */
+@keyframes grow-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.bar-grow {
+  transform-origin: left;
+  animation: grow-bar 600ms var(--ease-out-strong) both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade { animation: fade-in 200ms ease-out; }
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.thinking { animation: pulse-soft 1.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation-duration: 1ms; animation-delay: 0ms; }
+  .bar-grow { animation-duration: 1ms; }
+  .pressable { transition: none; }
+}
