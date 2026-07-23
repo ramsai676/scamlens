@@ -4,9 +4,9 @@ const nextConfig = {
   images: { unoptimized: true },
   webpack: (config, { isServer, webpack }) => {
     if (!isServer) {
-      // The Anthropic SDK imports Node built-ins for CLI credential profiles;
-      // none of that runs in the browser BYO-key path. Strip the node: scheme
-      // so the fallback:false rules below can null them out.
+      // Some optional dependencies import Node built-ins for CLI/credential
+      // paths that never run in the browser BYO-key path. Strip the node:
+      // scheme so the fallback:false rules below can null them out.
       config.plugins.push(
         new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
           resource.request = resource.request.replace(/^node:/, '');
